@@ -1,6 +1,7 @@
 #include <string>
 #include <iostream>
 #include <vector>
+#include "kmpAlgorithm.hpp"
 
 std::vector <int>  prefixFunction(const std::string &pattern){
     int m = pattern.length();
@@ -27,7 +28,7 @@ std::vector <int>  prefixFunction(const std::string &pattern){
 
 
 
-void KMPSearch(const std:: string text, const std::string pattern){
+int KMPSearch(const std:: string text, const std::string pattern){
     int n = text.length();
     int m = pattern.length();
 
@@ -41,14 +42,12 @@ void KMPSearch(const std:: string text, const std::string pattern){
 
     if (pattern [q] == text[i]){
         q = q+1;
+    }
     
     if (q == m){
-        std::cout << "Pattern occurs at index"<<( i - m + 1)<<std::endl;
 
-        q = prefix[q - 1];
-
+        return i - m + 1; 
+        }
     }
-  }
-}
-
+    return -1; 
 }
