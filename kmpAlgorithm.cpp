@@ -27,9 +27,6 @@ std::vector <int>  prefixFunction(const std::string &pattern){
 
 
 
-
-
-
 void KMPSearch(const std:: string text, const std::string pattern){
     int n = text.length();
     int m = pattern.length();
@@ -52,4 +49,6 @@ void KMPSearch(const std:: string text, const std::string pattern){
 
     }
   }
+}
+
 }
