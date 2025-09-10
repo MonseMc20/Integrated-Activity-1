@@ -15,7 +15,8 @@ class palindromeSearch {
     private:
 
         int longestLength;
-        int position;
+        int sPosition;
+        int ePosition;
         std::string text = "@";
 
-}
+};
