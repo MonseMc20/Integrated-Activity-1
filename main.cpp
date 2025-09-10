@@ -3,6 +3,7 @@
 #include <vector>
 #include <fstream>
 #include "kmpAlgorithm.hpp"
+#include "longestCommonSubstring.h"
 
 
 std::string readFile(const std::string &filename) {
@@ -35,6 +36,10 @@ int main() {
                 }
             }
         }
+        //Problema 3
+        pair result = longestCommonSubstring(transmissions[0], transmissions[1]);
+        cout << "Longest common substring in transmission 1: Initial position (" << result.first << "), last position (" << result.second << ")" << endl;
+
     } catch (const std::exception &e) {
         std::cerr << "Error: " << e.what() << std::endl;
     }
