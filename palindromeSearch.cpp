@@ -6,7 +6,8 @@
 
 palindromeSearch::palindromeSearch(){
     this -> longestLength = 0;
-    this -> position = 0;
+    this -> sPosition = 0;
+    this -> ePosition = 0;
 }
 
 void palindromeSearch::readFile(const std::string &filename){
@@ -52,10 +53,11 @@ void palindromeSearch::palindromes(){
         }
         if (p[i] > this->longestLength){
             this->longestLength = p[i];
-            this->position = (i - this->longestLength) / 2; 
+            this->sPosition = (i - this->longestLength) / 2;
+            this->ePosition = (i + this->longestLength) / 2; 
         }
     }
     
-    std::cout << "Longest Palindrome Length: " << this->longestLength << std::endl;
-    std::cout << "Starting Position: " << this->position << std::endl;
+    std::cout << "Start Position: " << this -> sPosition << " End Position: " << this -> ePosition <<std::endl;
+
 }
