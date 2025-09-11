@@ -1,42 +1,41 @@
-#include <iostream>
-#include <string>
-#include <vector>
-#include <fstream>
 #include "kmpAlgorithm.hpp"
+#include <fstream>
+#include <string>
+#include <iostream>
+#include <algorithm>
+using namespace std;
 
-
-std::string readFile(const std::string &filename) {
-    std::ifstream file(filename);
-    if (!file.is_open()) {
-        std::cerr << "Could not open file: " << filename << std::endl;
-        exit(1);
+string readFile(const string &filename) {
+    ifstream file(filename);
+    if (!file) {
+        cerr << "Error opening file: " << filename << endl;
+        return "";
     }
-    return std::string((std::istreambuf_iterator<char>(file)),
-                        std::istreambuf_iterator<char>());
+    string content, line;
+    while (getline(file, line)) {
+        // eliminar espacios, tabs y saltos de línea
+        line.erase(remove_if(line.begin(), line.end(), ::isspace), line.end());
+        content += line;
+    }
+    return content;
 }
 
-
 int main() {
-    try {
-        std::vector<std::string> mcodes = {"mcode1.txt", "mcode2.txt", "mcode3.txt"};
-        std::vector<std::string> transmissions = {"transmission1.txt", "transmission2.txt"};
+    string transmission1 = readFile("transmission1.txt");
+    string transmission2 = readFile("transmission2.txt");
 
-        for (const auto &mfile : mcodes) {
-            std::string mcode = readFile(mfile);
+    string m1 = readFile("mcode1.txt");
+    string m2 = readFile("mcode2.txt");
+    string m3 = readFile("mcode3.txt");
 
-            for (const auto &tfile : transmissions) {
-                std::string transmission = readFile(tfile);
+    string mcodes[] = {m1, m2, m3};
+    string transmissions[] = {transmission1, transmission2};
 
-                int pos = KMPSearch(transmission, mcode);
-                if (pos != -1) {
-                    std::cout << "true " << pos << std::endl;
-                } else {
-                    std::cout << "false" << std::endl;
-                }
-            }
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 2; j++) {
+            KMPSearch(transmissions[j], mcodes[i]);
         }
-    } catch (const std::exception &e) {
-        std::cerr << "Error: " << e.what() << std::endl;
     }
+
     return 0;
 }
