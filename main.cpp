@@ -4,6 +4,10 @@
 #include <iostream>
 #include <algorithm>
 using namespace std;
+#include "longestCommonSubstring.h"
+
+
+//Part 1
 
 string readFile(const string &filename) {
     ifstream file(filename);
@@ -21,6 +25,8 @@ string readFile(const string &filename) {
 }
 
 int main() {
+  
+  //Part1
     string transmission1 = readFile("transmission1.txt");
     string transmission2 = readFile("transmission2.txt");
 
@@ -35,6 +41,14 @@ int main() {
         for (int j = 0; j < 2; j++) {
             KMPSearch(transmissions[j], mcodes[i]);
         }
+
+        //Problema 3
+        pair result = longestCommonSubstring(transmissions[0], transmissions[1]);
+        cout << "Longest common substring in transmission 1: Initial position (" << result.first << "), last position (" << result.second << ")" << endl;
+
+    } catch (const std::exception &e) {
+        std::cerr << "Error: " << e.what() << std::endl;
+
     }
 
     return 0;
