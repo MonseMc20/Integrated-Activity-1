@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
 #include <vector>
-
+#include <iostream>
 
 inline std::vector <int>  prefixFunction(const std::string &pattern){
     int m = pattern.length();
