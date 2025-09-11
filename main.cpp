@@ -1,4 +1,4 @@
-#include "kmpAlgorithm.hpp"
+#include "kmpAlgorithm.h"
 #include <fstream>
 #include <string>
 #include <iostream>
