@@ -40,8 +40,8 @@ int main() {
     string mcodes[] = {m1, m2, m3};
     string transmissions[] = {transmission1, transmission2};
 
+    for (int j = 0; j < 2; j++) {          // primero transmissions
     for (int i = 0; i < 3; i++) {
-        for (int j = 0; j < 2; j++) {
             KMPSearch(transmissions[j], mcodes[i]);
         }
     }
