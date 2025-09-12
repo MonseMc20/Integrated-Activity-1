@@ -26,43 +26,44 @@ class palindromeSearch {
         }
 
         std::string transformText(){
-            std::string processedString;
+            std::string processedString = "@";
             for (char c : text){
                 processedString += "#" + std::string(1,c);
             }
 
-            processedString += "$";
+            processedString += "#$";
             return processedString;
         }
 
         void palindromes(){
-        int center = 0;
-        int right = 0;
-        int mirror;
-        std::string processedString = transformText();
+            int center = 0;
+            int right = 0;
+            int mirror;
+            std::string processedString = transformText();
 
-        int stringLength = processedString.length();
+            int stringLength = processedString.length();
 
-        std::vector<int> p(stringLength);
+            std::vector<int> p(stringLength);
 
-        for (int i = 1; i <= stringLength-2; i++){
-            mirror = 2*center - i;
-            if(i < right){
-                p[i] = std::min(right - i, p[mirror]);
+            for (int i = 1; i <= stringLength-1; i++){
+                mirror = 2*center - i;
+                if(i < right){
+                    p[i] = std::min(right - i, p[mirror]);
+                }
+                while ((processedString[i + p[i] + 1]) == processedString[i - p[i] - 1]){
+                    p[i]++;
+                }
+                if (i + p[i] > right){
+                    center = i;
+                    right = i + p[i];
+                }
+                if (p[i] > this->longestLength){
+                    this->longestLength = p[i];
+                    this->sPosition = (i - p[i]) / 2;
+                    this->ePosition = this->sPosition + p[i] - 1; 
+                }
             }
-            while ((processedString[i + p[i] + 1]) == processedString[i - p[i] - 1]){
-                p[i]++;
-            }
-            if (i + p[i] > right){
-                center = i;
-                right = i + p[i];
-            }
-            if (p[i] > this->longestLength){
-                this->longestLength = p[i];
-                this->sPosition = (i - this->longestLength) / 2;
-                this->ePosition = (i + this->longestLength) / 2; 
-            }
-        }
+            std::cout << sPosition + 1 << " " << ePosition + 1 << std::endl;
         }
 
     private:
@@ -70,6 +71,6 @@ class palindromeSearch {
         int longestLength;
         int sPosition;
         int ePosition;
-        std::string text = "@";
+        std::string text;
 
 };
