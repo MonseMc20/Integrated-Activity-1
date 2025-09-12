@@ -29,6 +29,7 @@ string readFile(const string &filename) {
 int main() {
   
     //Part1
+    cout << "Part 1" << endl;
 
     string transmission1 = readFile("transmission1.txt");
     string transmission2 = readFile("transmission2.txt");
@@ -47,6 +48,7 @@ int main() {
     }
 
     //Part 2
+    cout << endl << "Part 2" << endl;
 
     palindromeSearch search1;
     search1.readFile("transmission1.txt");
@@ -57,9 +59,9 @@ int main() {
     search2.palindromes();
 
     //Part 3
+    cout << endl << "Part 3" << endl;
 
     vector<int> result = longestCommonSubstring(transmissions[0], transmissions[1]);
-    cout << "Part 3" << endl;
     cout << "Transmission 1: (" << result[0] << "), (" << result[1] << ")" << endl;
     cout << "Transmission 2: (" << result[2] << "), (" << result[3] << ")" << endl;
 
