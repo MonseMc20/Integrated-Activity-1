@@ -1,4 +1,8 @@
 # Integrated-Activity-1
+## Monserrat Morales Cañez A01638959
+Worked on the palindrome search (part 2)
+
+
 ## Test cases part 3
 ### Test Case 1: 
 Files:
