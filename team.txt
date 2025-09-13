@@ -1,0 +1,8 @@
+Anett Martínez Vázquez A01645033
+Worked on the string matching and its test cases (part 1)
+
+Monserrat Morales Cañez A01638959
+Worked on the palindrome search and its test cases (part 2)
+
+Héctor Eduardo Ayala Gudiño A01638996
+Worked on the longest common substring and its test cases (part 3)
